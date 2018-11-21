@@ -1,0 +1,88 @@
+// Colors
+
+$brand:     #135CFA;
+
+// Grascale
+
+$darkest:   #121619;
+$dark:      #5E6163;
+$midtone:    #97999A;
+$light:     #E9EEF0;
+$lightest:  #F7F9FA;
+
+$keyline: #E4EBED;
+
+// Border Radius
+$radius-large: 12px;
+$radius-medium: 10px;
+$radius-small: 8px;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: $darkest;
+}
+
+div, span, p {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+}
+
+img.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-small;
+  display: inline-block;
+}
+
+nav {
+  width: 240px;
+  height: 100vh;
+  background: #F7F9FA;
+  float: left;
+  position: relative;
+
+  .user {
+    padding: 8px;
+    background: #F7F9FA;
+    display: inline-block;
+    border-radius: 12px;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+
+    img {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: inline-block;
+      float: left;
+    }
+
+    span.username {
+      line-height: 24px;
+      display: inline-block;
+      margin: 0 0 0 8px;
+      color: #5E6163;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.content-area {
+  width: calc(100vw - 240px);
+  height: 100vh;
+  float: left;
+  padding: 24px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
