@@ -5,6 +5,7 @@ import './App.scss';
 import queryString from 'query-string'
 
 import Comment from './Components/Comment/Comment'
+import Sidebar from './Components/Sidebar/Sidebar'
 
 var uniqid = require('uniqid');
 
@@ -17,8 +18,6 @@ class App extends Component {
       comments: []
     }
   }
-
-
 
   componentDidMount(){
     let parsed = queryString.parse(window.location.search)
@@ -33,6 +32,22 @@ class App extends Component {
         user_img: data.avatar_url,
         user_name: data.name
       })
+    })
+
+    // Notifications
+    // Playing with the API
+    fetch(apiURL + '/repos/seatgeek/product-design/notifications', {
+      headers: { 'Authorization': 'Bearer ' + accessToken }
+    }).then((response) => response.json()).then(data => {
+
+      let filterArray = []
+      for (var i = 0; i < data.length; i++){
+        if (data[i].reason == 'assign'){
+          filterArray.push(data[i])
+        }
+      }
+
+      console.log(filterArray)
     })
 
     // Comments
@@ -76,7 +91,6 @@ class App extends Component {
           }
         })
 
-        console.log(this.state.comments)
         return null
       })
     })
@@ -85,16 +99,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <nav>
-          <div className='user'>
-            <img src={this.state.user_img} alt='Profile' />
-            <span className='username'>{this.state.user_name}</span>
-          </div>
 
-          <form action='http://localhost:8888/login' id='form'>
-              <button>Login with GitHub</button>
-          </form>
-        </nav>
+        <Sidebar
+          user_img={this.state.user_img}
+          user_name={this.state.user_name}
+        />
 
         <div className='content-area'>
           <Comment
@@ -106,6 +115,7 @@ class App extends Component {
             body={this.state.comments.body}
           />
         </div>
+
       </div>
     );
   }
