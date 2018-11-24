@@ -9,13 +9,13 @@ class Comment extends Component {
       <div id='comment'>
         <div className='title-bar'>
           <input type='checkbox' />
-          <h4 className='issue-title'>Get Title from URL</h4>
+          <h4 className='issue-title'>{this.props.op}</h4>
           <span className='issue-num'>#{this.props.issue_num}</span>
           <span className='timestamp'>{this.props.timestamp}d</span>
         </div>
         <div className='comment'>
-          <img src={this.props.img} className='avatar' alt='User Profile' />
-          <ReactMarkdown source={this.props.comment} className='comment-body' />
+          <img src={this.props.op_img} className='avatar' alt='User Profile' />
+          <ReactMarkdown source={this.props.body} className='comment-body' />
         </div>
       </div>
     )

@@ -6,14 +6,19 @@ import queryString from 'query-string'
 
 import Comment from './Components/Comment/Comment'
 
+var uniqid = require('uniqid');
+
 class App extends Component {
   constructor(){
     super()
     this.state = {
-      user: { img: '', name: '' },
-      comment: []
+      user_img: '',
+      user_name: '',
+      comments: []
     }
   }
+
+
 
   componentDidMount(){
     let parsed = queryString.parse(window.location.search)
@@ -25,10 +30,8 @@ class App extends Component {
       headers: { 'Authorization': 'Bearer ' + accessToken }
     }).then((response) => response.json()).then(data => {
       this.setState({
-        user: {
-          img:    data.avatar_url,
-          name:   data.name
-        }
+        user_img: data.avatar_url,
+        user_name: data.name
       })
     })
 
@@ -37,7 +40,6 @@ class App extends Component {
       headers: { 'Authorization': 'Bearer ' + accessToken }
     }).then((response) => response.json()).then(data => {
 
-      // Map comments and create lets for each data point
       data.map(data => {
 
         // Get Issue Numbers
@@ -49,8 +51,23 @@ class App extends Component {
         let todayDate = +new Date()
         let daysAgo = Math.floor((((commentDate - todayDate) / 60000)/60)/24)
 
+        // Failed attempt at creating array from map
+        // this.setState (prevState => ({
+        //   comments: [...prevState.comments,
+        //     {
+        //       key: uniqid(),
+        //       issue_num: trimNum,
+        //       timestamp: daysAgo,
+        //       op: data.user.login,
+        //       op_img: data.user.avatar_url,
+        //       body: data.body
+        //     }
+        //   ]
+        // }))
+
         this.setState ({
-          comment: {
+          comments: {
+            key: uniqid(),
             issue_num: trimNum,
             timestamp: daysAgo,
             op: data.user.login,
@@ -59,19 +76,19 @@ class App extends Component {
           }
         })
 
+        console.log(this.state.comments)
         return null
       })
     })
   }
 
   render() {
-    console.log(this.state.comment)
     return (
       <div className="App">
         <nav>
           <div className='user'>
-            <img src={this.state.user.img} alt='Profile' />
-            <span className='username'>{this.state.user.name}</span>
+            <img src={this.state.user_img} alt='Profile' />
+            <span className='username'>{this.state.user_name}</span>
           </div>
 
           <form action='http://localhost:8888/login' id='form'>
@@ -80,12 +97,14 @@ class App extends Component {
         </nav>
 
         <div className='content-area'>
-            <Comment
-              issue_num={this.state.comment.issue_num}
-              timestamp={this.state.comment.timestamp}
-              img={this.state.comment.op_img}
-              comment={this.state.comment.body}
-            />
+          <Comment
+            key={this.state.comments.key}
+            issue_num={this.state.comments.issue_num}
+            timestamp={this.state.comments.timestamp}
+            op={this.state.comments.op}
+            op_img={this.state.comments.op_img}
+            body={this.state.comments.body}
+          />
         </div>
       </div>
     );
