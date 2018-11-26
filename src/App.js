@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import './App.scss';
-
-// Imports
+import { BrowserRouter, Route } from 'react-router-dom';
 import queryString from 'query-string'
+import './App.scss';
 
 import Comment from './Components/Comment/Comment'
 import Sidebar from './Components/Sidebar/Sidebar'
+
+// Routes
+import Inbox from './Routes/Inbox'
 
 var uniqid = require('uniqid');
 
@@ -109,20 +111,21 @@ class App extends Component {
         />
 
         <div className='content-area'>
-          {
-            this.state.showComments &&
-            this.state.comments.map(comment =>
-              <Comment
-                key={comment.key}
-                title={comment.title}
-                issue_num={comment.issue_num}
-                timestamp={comment.timestamp}
-                op={'Dan'}
-                op_img={comment.img}
-                body={comment.body}
-              />
-            )
-          }
+        <header><h1>Inbox</h1></header>
+        {
+          this.state.showComments &&
+          this.state.comments.map(comment =>
+            <Comment
+              key={comment.key}
+              title={comment.title}
+              issue_num={comment.issue_num}
+              timestamp={comment.timestamp}
+              op={'Dan'}
+              op_img={comment.img}
+              body={comment.body}
+            />
+          )
+        }
         </div>
 
       </div>

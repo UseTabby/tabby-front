@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon/Menu/Assigned</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M11,1.13825616e-13 L11,1.2654092 C11,2.26070995 11.7318598,3.1045514 12.7171573,3.24530818 L15.4242641,3.63203772 C16.9022103,3.8431729 18,5.10893508 18,6.60188621 L18,8 C18,9.1045695 17.1045695,10 16,10 L2,10 C0.8954305,10 1.3527075e-16,9.1045695 0,8 L2.18047802e-13,6.60188621 C3.12674467e-13,5.10893508 1.09778972,3.8431729 2.57573593,3.63203772 L5.28284271,3.24530818 C6.26814019,3.1045514 7,2.26070995 7,1.2654092 L7,1.13825616e-13 L11,1.13825616e-13 Z" id="path-1"></path>
+        <path d="M9,-10 L9,-10 C11.7614237,-10 14,-7.76142375 14,-5 L14,-3 C14,-0.790861001 12.209139,1 10,1 L8,1 C5.790861,1 4,-0.790861001 4,-3 L4,-5 C4,-7.76142375 6.23857625,-10 9,-10 Z" id="path-3"></path>
+        <filter x="-10.0%" y="-9.1%" width="120.0%" height="136.4%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Icon/Menu/Assigned" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <rect id="Bounds" x="0" y="0" width="24" height="24"></rect>
+            <g id="Group" transform="translate(3.000000, 12.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Rectangle" fill="#10CCA1" xlink:href="#path-1"></use>
+                <g id="Rectangle" mask="url(#mask-2)">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+            </g>
+            <path d="M12,1.99994013 L12.0000136,1.99993396 C14.7614373,1.99993396 17.0000136,4.23851021 17.0000136,6.99993396 C17.0000136,6.99993601 17.0000136,6.99993807 17.0000136,6.99994013 L16.9999949,9.96050762 C16.9999923,12.0407324 15.4055301,13.7737306 13.3325048,13.9466502 C12.9061198,13.9822167 12.4619515,14 12,14 C11.5380507,14 11.0938844,13.9822169 10.6675013,13.9466507 L10.6675012,13.9466521 C8.59446795,13.7737327 7,12.0407268 7,9.9604942 L7,6.99994013 C7,4.23851638 9.23857625,1.99994013 12,1.99994013 Z" id="Rectangle" fill="#10CCA1"></path>
+        </g>
+    </g>
+</svg>

@@ -114,3 +114,24 @@ fetch(apiURL + '/repos/seatgeek/product-design/issues/comments?since=2018-11-01T
     return null
   })
 })
+
+
+<div className='content-area'>
+  <header>
+    <h1>Inbox</h1>
+  </header>
+  {
+    this.state.showComments &&
+    this.state.comments.map(comment =>
+      <Comment
+        key={comment.key}
+        title={comment.title}
+        issue_num={comment.issue_num}
+        timestamp={comment.timestamp}
+        op={'Dan'}
+        op_img={comment.img}
+        body={comment.body}
+      />
+    )
+  }
+</div>

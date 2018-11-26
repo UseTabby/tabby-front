@@ -2,6 +2,7 @@
 
 #comment {
   width: 100%;
+  min-width: 640px;
   display: flex;
   flex-direction: column;
   padding: 12px;
@@ -40,10 +41,12 @@
   }
 
   .comment {
-    padding: 16px 8px 0px 7px;
+    padding: 16px 8px 0px 9px;
 
     img.avatar {
       float: left;
+      width: 20px;
+      height: 20px;
     }
 
     .comment-body {
