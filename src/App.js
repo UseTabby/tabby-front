@@ -64,13 +64,38 @@ class App extends Component {
       }
 
       filterArray.map(filteredData => {
-        this.setState (prevState => ({
-          comments: [...prevState.comments, {
-            key: uniqid(),
-            title: filteredData.subject.title,
-            url: filteredData.subject.url
-          }]
-        }))
+
+        // Get Issue Numbers
+        let issueNum = filteredData.subject.url.substr(filteredData.subject.url.length - 3)
+
+        // Days ago
+        let commentDate = +new Date(filteredData.updated_at)
+        let todayDate = +new Date()
+        let daysAgo = Math.floor((((commentDate - todayDate) / 60000)/60)/24)
+
+        // Get comment body
+        // Need to map over the results from the prev fetch and then fetch this data using that map
+        fetch(apiURL + '/repos/seatgeek/product-design/issues/comments/441655413', {
+          headers: { 'Authorization': 'Bearer ' + accessToken }
+        }).then((res) => res.json()).then(commentBody => {
+
+          // Create consts of the relevent infomatoin
+          const opBody = commentBody.body
+          const opImg = commentBody.user.avatar_url
+
+          this.setState (prevState => ({
+            comments: [...prevState.comments, {
+              key: uniqid(),
+              title: filteredData.subject.title,
+              url: filteredData.subject.url,
+              timestamp: daysAgo,
+              issue_num: issueNum,
+              body: opBody,
+              img: opImg
+            }]
+          }))
+        })
+
         return null
       })
     })
@@ -86,22 +111,20 @@ class App extends Component {
         />
 
         <div className='content-area'>
-
-        {
-          this.state.showComments &&
-          this.state.comments.map(comment =>
-            <Comment
-              key={comment.key}
-              title={comment.title}
-              issue_num='000'
-              timestamp='3'
-              op='Dan'
-              op_img={comment.op_img}
-              body='comment body'
-            />
-          )
-        }
-
+          {
+            this.state.showComments &&
+            this.state.comments.map(comment =>
+              <Comment
+                key={comment.key}
+                title={comment.title}
+                issue_num={comment.issue_num}
+                timestamp={comment.timestamp}
+                op={'Dan'}
+                op_img={comment.img}
+                body={comment.body}
+              />
+            )
+          }
         </div>
 
       </div>
