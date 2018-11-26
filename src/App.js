@@ -20,6 +20,14 @@ class App extends Component {
   }
 
   componentDidMount(){
+
+    // Loading State
+    setTimeout(loading => {
+      const loadingState = document.getElementById('tabby-loading-indicator')
+
+      loadingState.outerHTML = ''
+    }, 1500)
+
     let parsed = queryString.parse(window.location.search)
     let accessToken = parsed.access_token
     let apiURL = 'https://api.github.com'
