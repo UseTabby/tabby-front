@@ -13,33 +13,30 @@ class App extends Component {
   constructor(){
     super()
     this.state = {
-      showComments: false,
       user_img: '',
       user_name: '',
-      comments: []
+      comments: [],
+      showComments: false,
     }
   }
 
   componentDidMount(){
 
-    // Loading State
-    setTimeout(loading => {
-      const loadingState = document.getElementById('tabby-loading-indicator')
-
-      loadingState.outerHTML = ''
-    }, 1500)
-
-    setTimeout(loadComments => {
-      this.setState({
-        showComments: true
-      })
-    }, 2000)
-
+    // Define
     let parsed = queryString.parse(window.location.search)
     let accessToken = parsed.access_token
     let apiURL = 'https://api.github.com'
 
-    // User
+    // Loading State
+    setTimeout(loading => {
+      const loadingState = document.getElementById('tabby-loading-indicator')
+      loadingState.outerHTML = ''
+      this.setState({
+        showComments: true
+      })
+    }, 1500)
+
+    // User Fetch
     fetch(apiURL + '/user', {
       headers: { 'Authorization': 'Bearer ' + accessToken }
     }).then((response) => response.json()).then(data => {
@@ -50,7 +47,6 @@ class App extends Component {
     })
 
     // Notifications
-    // Playing with the API
     fetch(apiURL + '/repos/seatgeek/product-design/notifications', {
       headers: { 'Authorization': 'Bearer ' + accessToken }
     }).then((response) => response.json()).then(data => {
