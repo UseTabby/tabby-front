@@ -61,6 +61,8 @@ class App extends Component {
 
       filterArray.map(filteredData => {
 
+        console.log(filteredData)
+
         // Get Issue Numbers
         let issueNum = filteredData.subject.url.substr(filteredData.subject.url.length - 3)
 
@@ -71,7 +73,7 @@ class App extends Component {
 
         // Get comment body
         // Need to map over the results from the prev fetch and then fetch this data using that map
-        fetch(apiURL + '/repos/seatgeek/product-design/issues/comments/441655413', {
+        fetch(filteredData.subject.latest_comment_url, {
           headers: { 'Authorization': 'Bearer ' + accessToken }
         }).then((res) => res.json()).then(commentBody => {
 
