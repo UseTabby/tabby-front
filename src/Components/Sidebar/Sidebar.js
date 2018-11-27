@@ -31,7 +31,7 @@ class Sidebar extends Component {
           <li><img src={Closed} /><span>Closed</span></li>
         </ul>
 
-        <form action='http://localhost:8888/login' id='form'>
+        <form action='https://tabby-server.herokuapp.com/login' id='form'>
             <button>Login with GitHub</button>
         </form>
       </nav>
