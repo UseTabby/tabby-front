@@ -9,6 +9,9 @@ import Closed from './Assets/Closed.svg'
 
 import Logout from './Assets/Logout.svg'
 
+let ProdURL = 'https://tabby-server.herokuapp.com/login'
+let StagURL = 'https://localhost:8888/login'
+
 class Sidebar extends Component {
   render() {
     return(
@@ -31,7 +34,7 @@ class Sidebar extends Component {
           <li><img src={Closed} /><span>Closed</span></li>
         </ul>
 
-        <form action='https://tabby-server.herokuapp.com/login' id='form'>
+        <form action={StagURL} id='form'>
             <button>Login with GitHub</button>
         </form>
       </nav>
