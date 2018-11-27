@@ -49,7 +49,7 @@ class App extends Component {
     })
 
     // Notifications
-    fetch(apiURL + '/repos/seatgeek/product-design/notifications', {
+    fetch(apiURL + '/repos/UseTabby/tabby-feedback/notifications', {
       headers: { 'Authorization': 'Bearer ' + accessToken }
     }).then((response) => response.json()).then(data => {
 
