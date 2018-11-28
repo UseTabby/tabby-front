@@ -10,7 +10,7 @@ import Closed from './Assets/Closed.svg'
 import Logout from './Assets/Logout.svg'
 
 let ProdURL = 'https://tabby-server.herokuapp.com/login'
-let StagURL = 'https://localhost:8888/login'
+let StagURL = 'http://localhost:8888/login'
 
 class Sidebar extends Component {
   render() {
